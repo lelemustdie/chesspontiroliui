@@ -3,6 +3,7 @@ package common;
 import checkers.factory.CheckerGameFactory;
 import common.Adapters.Adapter;
 import edu.austral.dissis.chess.gui.*;
+import javachess.Factory.GameFactory;
 import org.jetbrains.annotations.NotNull;
 
 public class MyGameEngine implements GameEngine {
@@ -11,8 +12,8 @@ public class MyGameEngine implements GameEngine {
 
 
     public MyGameEngine() {
-        this.game = new CheckerGameFactory().createGame(); //change GameFactory o CheckerGameFactory
-    }
+        this.game = new GameFactory().createGame(); //change GameFactory o CheckerGameFactory
+    } //toggle createGame or createFirstToEatGame
 
     @NotNull
     @Override
