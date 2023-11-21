@@ -1,4 +1,4 @@
-package javachess;
+package javachess.mover;
 
 import common.*;
 import common.Enums.Color;

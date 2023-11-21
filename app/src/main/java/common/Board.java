@@ -70,5 +70,14 @@ public class Board {
         }
         return null; // nunca va a llegar a esto pq los peones no vuelven al mismo lugar
     }
+    public Piece getPiece(Coordinate coordinate) {
+        return pieces.get(coordinate);
+    }
 
+    public Board addAndRemovePiece (Coordinate pieceToRemove, Piece pieceToAdd, Coordinate coordinate){
+        Map<Coordinate, Piece> copyPieces = new HashMap<>(pieces);
+        copyPieces.remove(pieceToRemove);
+        copyPieces.put(coordinate, pieceToAdd);
+        return new Board(rows, columns, new HashMap<>(copyPieces));
+    }
 }

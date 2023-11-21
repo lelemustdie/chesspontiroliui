@@ -176,16 +176,28 @@ public class PieceFactory {
     @NotNull
     private static Validator kingValidators() {
         Validator validator = new CompositeAndValidator(
+                new WeAreFriendsValidator(),
+
                 new CompositeOrValidator(
-                        new VerticalMoveValidator(true),
-                        new VerticalMoveValidator(false),
-                        new HorizontalMoveValidator(true),
-                        new HorizontalMoveValidator(false),
-                        new DiagonalMoveValidator(true),
-                        new DiagonalMoveValidator(false)
-                ),
-                new LimitedMoveValidator(1),
-                new WeAreFriendsValidator()
+                        new CompositeAndValidator(
+                                new LimitedMoveValidator(1),
+                                new CompositeOrValidator(
+                                        new VerticalMoveValidator(true),
+                                        new VerticalMoveValidator(false),
+                                        new HorizontalMoveValidator(true),
+                                        new HorizontalMoveValidator(false),
+                                        new DiagonalMoveValidator(true),
+                                        new DiagonalMoveValidator(false)
+                                )
+                        ),
+                        new CompositeAndValidator(
+                                new LimitedMoveValidator(2),
+                                new CompositeOrValidator(
+                                        new HorizontalMoveValidator(true),
+                                        new HorizontalMoveValidator(false)
+                                )
+                        )
+                )
         );
         return validator;
     }

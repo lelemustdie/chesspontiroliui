@@ -3,10 +3,11 @@ package common.Mover;
 import common.Game;
 import common.GetResult;
 import common.Movement;
+import common.Mover.Mover;
 
 import java.util.Optional;
 
-public class CompositeOrMover implements Mover{
+public class CompositeOrMover implements Mover {
 
     private final Mover[] movers;
 

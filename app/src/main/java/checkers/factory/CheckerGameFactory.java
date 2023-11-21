@@ -10,6 +10,7 @@ import common.Enums.Color;
 import common.Game;
 import common.Mover.SequenceMover;
 import common.Validators.CompositeOrValidator;
+import common.Validators.FirstToEatValidator;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class CheckerGameFactory {
                 new CompositeOrValidator( //win
                         new NoEnemyPiecesAtSight(),
                         new GameOverValidator()
+                        //new FirstToEatValidator()
                 ),
                 new SequenceMover( //steps
                         new MovingSamePieceMover(),
@@ -32,5 +34,25 @@ public class CheckerGameFactory {
                         new PromotionMover()
                 )
                 );
+    }
+
+    public Game createTinyGame(){
+        return new Game(
+                Color.WHITE,
+                Color.BLACK,
+                List.of(boardFactory.createTinyCheckersBoard()),
+                new CompositeOrValidator( //win
+                        new NoEnemyPiecesAtSight(),
+                        new GameOverValidator()
+                        //new FirstToEatValidator()
+                ),
+                new SequenceMover( //steps
+                        new MovingSamePieceMover(),
+                        new DefaultCheckersMover(),
+                        new CanEatAgainMover(),
+                        new PromotionMover()
+                )
+        );
+
     }
 }

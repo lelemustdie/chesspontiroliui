@@ -1,14 +1,16 @@
 package javachess.Factory;
 
-import common.CompositeOrMover;
+import common.Mover.CompositeOrMover;
 import common.Enums.Color;
 import common.Game;
 import common.Mover.MoverWithValidator;
-import javachess.ChessMover;
-import javachess.PromotionMover;
+import common.Mover.SequenceMover;
+import javachess.mover.CastlingMover;
+import javachess.mover.ChessMover;
+import javachess.mover.PromotionMover;
 import javachess.Validators.CheckNMate.CheckMateValidator;
 import javachess.Validators.CheckNMate.CheckValidator;
-import javachess.Validators.FirstToEatValidator;
+import common.Validators.FirstToEatValidator;
 
 import java.util.List;
 
@@ -19,13 +21,21 @@ public class GameFactory {
         return new Game(Color.WHITE, Color.BLACK, List.of(boardFactory.createClassicBoard()),
                 new CheckMateValidator(new CheckValidator()),
                 new MoverWithValidator(new CheckValidator(),
-                        new CompositeOrMover(new PromotionMover(),
-                                new ChessMover())));
+                        new SequenceMover(
+                                new CompositeOrMover(
+                                        new PromotionMover(),
+                                        new ChessMover()
+                                        ),
+                                new CastlingMover()
+                        )));
+
     }
 
     public Game createFirstToEatGame() {
         return new Game(Color.WHITE, Color.BLACK, List.of(boardFactory.createFirstToEatBoard()),
                 new FirstToEatValidator(),
-                new CompositeOrMover(new ChessMover()));
+                new CompositeOrMover(
+                        new ChessMover()
+                ));
     }
 }

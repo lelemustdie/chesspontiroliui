@@ -1,4 +1,4 @@
-package javachess.Validators;
+package common.Validators;
 
 
 import common.Board;

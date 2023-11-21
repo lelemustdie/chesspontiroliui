@@ -28,4 +28,23 @@ public class CheckerBoardFactory {
 
         return new Board(8, 8, pieces);
     }
+
+    public Board createTinyCheckersBoard(){
+
+        int id = 1;
+
+        Map<Coordinate, Piece> pieces = new HashMap<>();
+
+        for (int i = 1; i <= 10; i+= 2){
+            pieces.put(new Coordinate(i, 1), pieceFactory.createWhitePiece(id++));
+            pieces.put(new Coordinate(i + 1, 2), pieceFactory.createWhitePiece(id++));
+            pieces.put(new Coordinate(i + 1, 6), pieceFactory.createBlackPiece(id++));
+            pieces.put(new Coordinate(i, 5), pieceFactory.createBlackPiece(id++));
+
+        }
+
+        return new Board(6, 10, pieces);
+    }
+
+
 }
