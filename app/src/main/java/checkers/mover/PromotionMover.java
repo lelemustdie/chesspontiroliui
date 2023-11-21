@@ -19,10 +19,10 @@ public class PromotionMover implements Mover {
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
         if (checkIfPieceCanPromote(boardGame.getCurrentBoard(), movement)){
             Board newBoard = promotePiece(boardGame.getCurrentBoard(), movement.getDestination());
-            List<Board> newHistory = new ArrayList<>(boardGame.getHistory());
+            List<Board> newHistory = new ArrayList<>(boardGame.history());
             newHistory.remove(newHistory.size() - 1);
             newHistory.add(newBoard);
-            return new GetResult<>(Optional.of(new Game(boardGame.getTurn(), boardGame.getPreviousTurn(), newHistory, boardGame.getWinningValidator(), boardGame.getMover())), false);
+            return new GetResult<>(Optional.of(new Game(boardGame.turn(), boardGame.previousTurn(), newHistory, boardGame.winningValidator(), boardGame.mover())), false);
         }
         else{
             return new GetResult<>(Optional.of(boardGame), false);

@@ -26,9 +26,9 @@ public class MovingSamePieceMover implements Mover {
 
     @Override
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
-        if (boardGame.getPreviousTurn() != boardGame.getTurn())
+        if (boardGame.previousTurn() != boardGame.turn())
             return new GetResult<>(Optional.of(boardGame), false);
-        if (!isMovingSamePiece(boardGame.getHistory(), movement))
+        if (!isMovingSamePiece(boardGame.history(), movement))
             return new GetResult<>(Optional.of(boardGame), true);
         return new GetResult<>(Optional.of(boardGame), false);
     }

@@ -16,14 +16,14 @@ public class DefaultCheckersMover implements Mover {
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
         Board board = boardGame.getCurrentBoard();
         Piece piece = board.getPieces().get(movement.getOrigin());
-        if (!piece.getValidator().isValid(boardGame.getHistory(), movement)) return new GetResult<>(Optional.of(boardGame), true);
-        if(forcedToEatValidator.isValid(boardGame.getHistory(), movement)) {
+        if (!piece.getValidator().isValid(boardGame.history(), movement)) return new GetResult<>(Optional.of(boardGame), true);
+        if(forcedToEatValidator.isValid(boardGame.history(), movement)) {
             return new GetResult<>(Optional.of(boardGame),true);
         }
         Board newBoard = executeMovement(board, piece, movement);
-        List<Board> newHistory = new ArrayList<>(boardGame.getHistory());
+        List<Board> newHistory = new ArrayList<>(boardGame.history());
         newHistory.add(newBoard);
-        return new GetResult<>(Optional.of(new Game(boardGame.getTurn(), boardGame.getTurn(), newHistory, boardGame.getWinningValidator(), boardGame.getMover())), false);
+        return new GetResult<>(Optional.of(new Game(boardGame.turn(), boardGame.turn(), newHistory, boardGame.winningValidator(), boardGame.mover())), false);
     }
 
 

@@ -19,7 +19,7 @@ public class PromotionMover implements Mover {
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
         Board board = boardGame.getCurrentBoard();
         Piece piece = board.getPieces().get(movement.getOrigin());
-        if (piece.getColor() != boardGame.getTurn() || !piece.getValidator().isValid(boardGame.getHistory(), movement))
+        if (piece.getColor() != boardGame.turn() || !piece.getValidator().isValid(boardGame.history(), movement))
             return new GetResult<>(Optional.of(boardGame), true);
         if (checkIfPawnCanPromote(board, movement)) return promotePawn(boardGame, movement);
         return new GetResult<>(Optional.of(boardGame), true);
@@ -30,9 +30,9 @@ public class PromotionMover implements Mover {
         Piece piece = board.getPieces().get(movement.getOrigin());
         Board newBoard = board.movePiece(movement);
         Board newBoard2 = piece.getColor() == Color.WHITE ? newBoard.addPiece(movement.getDestination(), pieceFactory.createWhiteQueen(piece.getId())) : newBoard.addPiece(movement.getDestination(), pieceFactory.createBlackQueen(piece.getId()));
-        List<Board> newHistory = new ArrayList<>(boardGame.getHistory());
+        List<Board> newHistory = new ArrayList<>(boardGame.history());
         newHistory.add(newBoard2);
-        return new GetResult<>(Optional.of(new Game(boardGame.nextTurn(), boardGame.getTurn(), newHistory, boardGame.getWinningValidator(), boardGame.getMover())), false);
+        return new GetResult<>(Optional.of(new Game(boardGame.nextTurn(), boardGame.turn(), newHistory, boardGame.winningValidator(), boardGame.mover())), false);
     }
 
     private boolean checkIfPawnCanPromote(Board board, Movement movement){

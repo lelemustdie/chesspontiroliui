@@ -21,7 +21,7 @@ public class MoverWithValidator implements Mover {
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
         GetResult<Game, Boolean> result = mover.move(boardGame, movement);
         if (!result.getErrorValue()){
-            if (validator.isValid(result.getOptional().get().getHistory(), movement)){
+            if (validator.isValid(result.getOptional().get().history(), movement)){
                 return result;
             }
         }

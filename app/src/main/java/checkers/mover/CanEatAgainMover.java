@@ -17,10 +17,10 @@ public class CanEatAgainMover implements Mover {
 
     @Override
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
-        if (!checkNumberOfPieces(boardGame.getHistory())) return new GetResult<>(Optional.of(new Game(boardGame.nextTurn(), boardGame.getTurn(), boardGame.getHistory(), boardGame.getWinningValidator(), boardGame.getMover())), false);
-        if (eatAgainValidator.isValid(boardGame.getHistory(), movement))
+        if (!checkNumberOfPieces(boardGame.history())) return new GetResult<>(Optional.of(new Game(boardGame.nextTurn(), boardGame.turn(), boardGame.history(), boardGame.winningValidator(), boardGame.mover())), false);
+        if (eatAgainValidator.isValid(boardGame.history(), movement))
             return new GetResult<>(Optional.of(boardGame), false);
-        return new GetResult<>(Optional.of(new Game(boardGame.nextTurn(), boardGame.getTurn(), boardGame.getHistory(), boardGame.getWinningValidator(), boardGame.getMover())), false);
+        return new GetResult<>(Optional.of(new Game(boardGame.nextTurn(), boardGame.turn(), boardGame.history(), boardGame.winningValidator(), boardGame.mover())), false);
     }
 
     private boolean checkNumberOfPieces(List<Board> history){

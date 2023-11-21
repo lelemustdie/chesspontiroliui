@@ -44,7 +44,7 @@ public class CastlingMover implements Mover {
         if ( rook == null ) {
             return new GetResult(Optional.of(game), true);
         }
-        if (!isFirstMove.isValid(game.getHistory(), new Movement(rookCoordinate, rookDestiny))){
+        if (!isFirstMove.isValid(game.history(), new Movement(rookCoordinate, rookDestiny))){
             return new GetResult(Optional.of(game), true);
         }
         Board newBoard = currentBoard.addAndRemovePiece(rookCoordinate, rook, rookDestiny);
@@ -52,12 +52,12 @@ public class CastlingMover implements Mover {
     }
 
     private Game newGame (Game currentGame, Board newBoard){
-        List<Board> newHistory = new ArrayList<>(currentGame.getHistory());
+        List<Board> newHistory = new ArrayList<>(currentGame.history());
         newHistory.remove(newHistory.size()-1);
         newHistory.add(newBoard);
-        return new Game(currentGame.nextTurn(), currentGame.getTurn(),
+        return new Game(currentGame.nextTurn(), currentGame.turn(),
                 newHistory,
-                currentGame.getWinningValidator(),
-                currentGame.getMover());
+                currentGame.winningValidator(),
+                currentGame.mover());
     }
 }
