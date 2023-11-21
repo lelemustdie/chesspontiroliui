@@ -4,7 +4,7 @@ import common.Board;
 import common.Coordinate;
 import common.Movement;
 import common.Piece;
-import common.Validators.Validator;
+import common.validators.Validator;
 
 import java.util.List;
 import java.util.Map;

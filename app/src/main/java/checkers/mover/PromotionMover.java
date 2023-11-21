@@ -2,9 +2,9 @@ package checkers.mover;
 
 import checkers.factory.CheckerPieceFactory;
 import common.*;
-import common.Enums.Color;
-import common.Enums.PieceType;
-import common.Mover.Mover;
+import common.enums.Color;
+import common.enums.PieceType;
+import common.mover.Mover;
 
 import java.util.ArrayList;
 import java.util.List;

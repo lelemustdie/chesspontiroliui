@@ -1,9 +1,9 @@
 package javachess.mover;
 import common.*;
-import common.Enums.PieceType;
-import common.Mover.Mover;
-import common.Validators.Validator;
-import javachess.Validators.SpecialMovements.PieceFirstMoveValidator;
+import common.enums.PieceType;
+import common.mover.Mover;
+import common.validators.Validator;
+import javachess.validators.specialmovements.PieceFirstMoveValidator;
 
 import java.util.*;
 

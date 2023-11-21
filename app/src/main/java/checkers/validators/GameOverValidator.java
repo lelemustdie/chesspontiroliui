@@ -2,10 +2,10 @@ package checkers.validators;
 
 import common.Board;
 import common.Coordinate;
-import common.Enums.Color;
+import common.enums.Color;
 import common.Movement;
 import common.Piece;
-import common.Validators.Validator;
+import common.validators.Validator;
 
 import java.util.List;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class GameOverValidator implements Validator {
                 for(Map.Entry<Coordinate, Piece> piece : pieces.entrySet()){
                     Movement move = new Movement(piece.getKey(), currentDestination);
                     if (piece.getValue().getColor() == currentPlayer && piece.getValue().getValidator().isValid(history, move)){
-                        return false;
+                        return false; //busca un movimiento valido en el tablero para el currentPlayer
                     }
                 }
             }
@@ -37,5 +37,5 @@ public class GameOverValidator implements Validator {
         Board previousBoard = history.get(history.size() - 2    );
         Map<Coordinate, Piece> pieces = previousBoard.getPieces();
         return pieces.get(origin).getColor();
-    }
+    } //busca el color del jugador actual usando el origen del previous board
 }

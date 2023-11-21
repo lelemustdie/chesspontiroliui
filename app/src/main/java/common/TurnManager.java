@@ -1,6 +1,6 @@
 package common;
 
-import common.Enums.Color;
+import common.enums.Color;
 
 public class TurnManager {
     private final Color currentTurn;

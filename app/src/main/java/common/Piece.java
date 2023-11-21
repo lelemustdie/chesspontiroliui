@@ -1,8 +1,8 @@
 package common;
 
-import common.Enums.Color;
-import common.Enums.PieceType;
-import common.Validators.Validator;
+import common.enums.Color;
+import common.enums.PieceType;
+import common.validators.Validator;
 
 public class Piece {
     private final int id;

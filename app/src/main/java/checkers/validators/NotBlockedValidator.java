@@ -3,7 +3,7 @@ package checkers.validators;
 
 import common.Board;
 import common.Movement;
-import common.Validators.Validator;
+import common.validators.Validator;
 
 import java.util.List;
 

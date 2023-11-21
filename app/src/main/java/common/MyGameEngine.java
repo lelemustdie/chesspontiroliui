@@ -1,8 +1,8 @@
 package common;
 
-import common.Adapters.Adapter;
+import common.adapters.Adapter;
 import edu.austral.dissis.chess.gui.*;
-import javachess.Factory.GameFactory;
+import javachess.factory.GameFactory;
 import org.jetbrains.annotations.NotNull;
 
 public class MyGameEngine implements GameEngine {
@@ -11,7 +11,8 @@ public class MyGameEngine implements GameEngine {
 
 
     public MyGameEngine() {
-        this.game = new GameFactory().createGame(); //change GameFactory o CheckerGameFactory
+        this.game = new GameFactory().createGame();
+        //change GameFactory o CheckerGameFactory
     } //toggle createGame or createFirstToEatGame
 
     @NotNull
@@ -23,7 +24,7 @@ public class MyGameEngine implements GameEngine {
             return new InvalidMove("Invalid Move");
         }else {
             Game resultGame = result.getOptional().get();
-            if (resultGame.winningValidator().isValid(resultGame.history(), movement))
+            if (resultGame.winningValidator().isValid(resultGame.history(), movement)) //mover al game
                 return new GameOver(adapter.colorToPlayerColor(resultGame.nextTurn()));
             this.game = resultGame;
             return new NewGameState(adapter.piecesToChessPieces(resultGame.getCurrentBoard().getPieces()), adapter.colorToPlayerColor(resultGame.turn()));

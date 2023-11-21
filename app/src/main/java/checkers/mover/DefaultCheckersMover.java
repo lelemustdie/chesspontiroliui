@@ -2,16 +2,16 @@ package checkers.mover;
 
 import checkers.validators.ForcedToEatValidator;
 import common.*;
-import common.Mover.Mover;
-import common.Validators.Validator;
+import common.mover.Mover;
+import common.validators.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class DefaultCheckersMover implements Mover {
+public class DefaultCheckersMover implements Mover { //same as chessmover
 
-    private Validator forcedToEatValidator = new ForcedToEatValidator(true);
+    private Validator forcedToEatValidator = new ForcedToEatValidator(true); //setteo en true
     @Override
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
         Board board = boardGame.getCurrentBoard();
@@ -23,7 +23,10 @@ public class DefaultCheckersMover implements Mover {
         Board newBoard = executeMovement(board, piece, movement);
         List<Board> newHistory = new ArrayList<>(boardGame.history());
         newHistory.add(newBoard);
-        return new GetResult<>(Optional.of(new Game(boardGame.turn(), boardGame.turn(), newHistory, boardGame.winningValidator(), boardGame.mover())), false);
+        return new GetResult<>(Optional.of(new Game(boardGame.turn(),
+                boardGame.turn(), newHistory,
+                boardGame.winningValidator(),
+                boardGame.mover())), false);
     }
 
 

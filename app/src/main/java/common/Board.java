@@ -1,7 +1,7 @@
 package common;
 
-import common.Enums.Color;
-import common.Enums.PieceType;
+import common.enums.Color;
+import common.enums.PieceType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class Board {
     }
 
     public Map<Coordinate, Piece> getPieces() {
-        return pieces;
+        return pieces; //clone
     }
 
     public Board movePiece(Movement movement){

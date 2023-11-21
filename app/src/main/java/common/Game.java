@@ -1,8 +1,8 @@
 package common;
 
-import common.Enums.Color;
-import common.Mover.Mover;
-import common.Validators.Validator;
+import common.enums.Color;
+import common.mover.Mover;
+import common.validators.Validator;
 
 import java.util.List;
 import java.util.Optional;

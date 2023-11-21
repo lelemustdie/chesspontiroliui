@@ -5,10 +5,10 @@ import checkers.validators.DiagonalMoveValidator;
 import checkers.validators.HasEatenValidator;
 import checkers.validators.NotBlockedValidator;
 import checkers.validators.WeAreFriends;
-import common.Enums.Color;
-import common.Enums.PieceType;
+import common.enums.Color;
+import common.enums.PieceType;
 import common.Piece;
-import common.Validators.*;
+import common.validators.*;
 
 public class CheckerPieceFactory {
 

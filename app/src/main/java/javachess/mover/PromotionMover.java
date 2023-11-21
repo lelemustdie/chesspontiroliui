@@ -1,10 +1,10 @@
 package javachess.mover;
 
 import common.*;
-import common.Enums.Color;
-import common.Enums.PieceType;
-import common.Mover.Mover;
-import javachess.Factory.PieceFactory;
+import common.enums.Color;
+import common.enums.PieceType;
+import common.mover.Mover;
+import javachess.factory.PieceFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class PromotionMover implements Mover {
 
     @Override
     public GetResult<Game, Boolean> move(Game boardGame, Movement movement) {
-        Board board = boardGame.getCurrentBoard();
+        Board board = boardGame.getCurrentBoard(); //abstraer metodos del if
         Piece piece = board.getPieces().get(movement.getOrigin());
         if (piece.getColor() != boardGame.turn() || !piece.getValidator().isValid(boardGame.history(), movement))
             return new GetResult<>(Optional.of(boardGame), true);
@@ -37,7 +37,7 @@ public class PromotionMover implements Mover {
 
     private boolean checkIfPawnCanPromote(Board board, Movement movement){
         Piece piece = board.getPieces().get(movement.getOrigin());
-        if(piece.getType() == PieceType.PAWN){
+        if(piece.getType() == PieceType.PAWN){ //algebra de cords
             if(piece.getColor() == Color.WHITE){
                 return movement.getDestination().row() == board.getRows();
             }

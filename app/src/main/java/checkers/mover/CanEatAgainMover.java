@@ -6,7 +6,7 @@ import common.Board;
 import common.Game;
 import common.GetResult;
 import common.Movement;
-import common.Mover.Mover;
+import common.mover.Mover;
 
 import java.util.List;
 import java.util.Optional;

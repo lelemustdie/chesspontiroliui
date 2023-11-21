@@ -1,7 +1,7 @@
 package checkers.mover;
 
 import common.*;
-import common.Mover.Mover;
+import common.mover.Mover;
 
 import java.util.List;
 import java.util.Map;

@@ -6,11 +6,10 @@ import checkers.mover.MovingSamePieceMover;
 import checkers.mover.PromotionMover;
 import checkers.validators.GameOverValidator;
 import checkers.validators.NoEnemyPiecesAtSight;
-import common.Enums.Color;
+import common.enums.Color;
 import common.Game;
-import common.Mover.SequenceMover;
-import common.Validators.CompositeOrValidator;
-import common.Validators.FirstToEatValidator;
+import common.mover.SequenceMover;
+import common.validators.CompositeOrValidator;
 
 import java.util.List;
 

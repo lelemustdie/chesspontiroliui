@@ -2,7 +2,7 @@ package common;
 
 import java.util.Objects;
 public record Coordinate(int column, int row) { //coordenadas
-    @Override
+    @Override //record ya las implementa
     public boolean equals(Object object) {
         if (object == this) return true;
         if (!(object instanceof Coordinate coordinate)) return false;

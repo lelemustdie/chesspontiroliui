@@ -1,6 +1,6 @@
 package javachess.mover;
 import common.*;
-import common.Mover.Mover;
+import common.mover.Mover;
 
 import java.util.ArrayList;
 import java.util.List;
