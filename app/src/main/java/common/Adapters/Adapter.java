@@ -2,10 +2,10 @@ package common.Adapters;
 
 import common.Board;
 import common.Coordinate;
+import common.Enums.Color;
 import common.Movement;
 import common.Piece;
 import edu.austral.dissis.chess.gui.*;
-import common.Enums.Color;
 
 import java.util.ArrayList;
 import java.util.List;

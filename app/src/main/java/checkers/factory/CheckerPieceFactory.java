@@ -3,8 +3,8 @@ package checkers.factory;
 
 import checkers.validators.DiagonalMoveValidator;
 import checkers.validators.HasEatenValidator;
-import checkers.validators.WeAreFriends;
 import checkers.validators.NotBlockedValidator;
+import checkers.validators.WeAreFriends;
 import common.Enums.Color;
 import common.Enums.PieceType;
 import common.Piece;

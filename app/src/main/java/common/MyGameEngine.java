@@ -3,7 +3,6 @@ package common;
 import checkers.factory.CheckerGameFactory;
 import common.Adapters.Adapter;
 import edu.austral.dissis.chess.gui.*;
-import javachess.Factory.GameFactory;
 import org.jetbrains.annotations.NotNull;
 
 public class MyGameEngine implements GameEngine {

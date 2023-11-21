@@ -2,13 +2,13 @@ package javachess.Validators.CheckNMate;
 
 import common.Board;
 import common.Coordinate;
+import common.Enums.Color;
 import common.Movement;
 import common.Piece;
-import common.Enums.Color;
 import common.Validators.Validator;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class CheckMateValidator implements Validator {

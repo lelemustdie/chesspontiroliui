@@ -1,18 +1,20 @@
 package javachess.Factory;
 
 import common.Enums.Color;
-import common.Piece;
 import common.Enums.PieceType;
+import common.Piece;
 import common.Validators.CompositeAndValidator;
 import common.Validators.CompositeOrValidator;
-import common.Validators.Validator;
-import javachess.Validators.*;
+import common.Validators.LimitedMoveValidator;
 import common.Validators.Movements.DiagonalMoveValidator;
 import common.Validators.Movements.HorizontalMoveValidator;
 import common.Validators.Movements.VerticalMoveValidator;
+import common.Validators.Validator;
+import javachess.Validators.EatingValidator;
+import javachess.Validators.JustMovingAroundValidator;
 import javachess.Validators.SpecialMovements.KnightMoveValidator;
-import common.Validators.LimitedMoveValidator;
 import javachess.Validators.SpecialMovements.PieceFirstMoveValidator;
+import javachess.Validators.WeAreFriendsValidator;
 import org.jetbrains.annotations.NotNull;
 
 public class PieceFactory {

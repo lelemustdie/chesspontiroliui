@@ -2,7 +2,10 @@ package checkers.mover;
 
 import checkers.validators.CanEatAgainValidator;
 import checkers.validators.HasEatenValidator;
-import common.*;
+import common.Board;
+import common.Game;
+import common.GetResult;
+import common.Movement;
 import common.Mover.Mover;
 
 import java.util.List;

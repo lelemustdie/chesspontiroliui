@@ -3,7 +3,6 @@ package common.Mover;
 import common.Game;
 import common.GetResult;
 import common.Movement;
-import common.Mover.Mover;
 
 public class SequenceMover implements Mover { //secuenciador de mov
 

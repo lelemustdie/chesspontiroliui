@@ -2,9 +2,9 @@ package lan.client.listeners;
 
 import edu.austral.dissis.chess.gui.NewGameState;
 import edu.austral.ingsis.clientserver.Message;
+import edu.austral.ingsis.clientserver.MessageListener;
 import lan.client.GameClient;
 import org.jetbrains.annotations.NotNull;
-import edu.austral.ingsis.clientserver.MessageListener;
 
 public class NewStateListener implements MessageListener<NewGameState> {
 

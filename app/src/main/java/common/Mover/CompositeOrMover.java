@@ -1,4 +1,4 @@
-package src.common.mover;
+package common.Mover;
 
 import common.Game;
 import common.GetResult;
