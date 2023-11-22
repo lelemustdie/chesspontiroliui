@@ -55,7 +55,7 @@ public class CastlingMover implements Mover {
         List<Board> newHistory = new ArrayList<>(currentGame.history());
         newHistory.remove(newHistory.size()-1);
         newHistory.add(newBoard);
-        return new Game(currentGame.nextTurn(), currentGame.turn(),
+        return new Game(currentGame.turn(), currentGame.nextTurn(),
                 newHistory,
                 currentGame.winningValidator(),
                 currentGame.mover());

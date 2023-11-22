@@ -34,8 +34,12 @@ public class GameFactory {
     public Game createFirstToEatGame() {
         return new Game(Color.WHITE, Color.BLACK, List.of(boardFactory.createFirstToEatBoard()),
                 new FirstToEatValidator(),
-                new CompositeOrMover(
-                        new ChessMover()
+                new SequenceMover(
+                        new CompositeOrMover(
+                                new PromotionMover(),
+                                new ChessMover()
+                        ),
+                        new CastlingMover()
                 ));
     }
 }

@@ -11,7 +11,7 @@ public class MyGameEngine implements GameEngine {
 
 
     public MyGameEngine() {
-        this.game = new GameFactory().createGame();
+        this.game = new GameFactory().createFirstToEatGame();
         //change GameFactory o CheckerGameFactory
     } //toggle createGame or createFirstToEatGame
 
