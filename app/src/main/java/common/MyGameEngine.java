@@ -21,11 +21,12 @@ public class MyGameEngine implements GameEngine {
         Movement movement = adapter.moveToMovement(move);
         GetResult<Game, Boolean> result = game.move(movement);
         if (result.getErrorValue()){
-            return new InvalidMove("Invalid Move");
-        }else {
+            if (result.getMessage().equals("Game Over")) {
+                return new GameOver(adapter.colorToPlayerColor(result.getOptional().get().nextTurn()));
+            }
+            return new InvalidMove("Invalid Move"); //extraccion de logica de get winner al game modificando el getresult
+        } else {
             Game resultGame = result.getOptional().get();
-            if (resultGame.winningValidator().isValid(resultGame.history(), movement)) //mover al game
-                return new GameOver(adapter.colorToPlayerColor(resultGame.nextTurn()));
             this.game = resultGame;
             return new NewGameState(adapter.piecesToChessPieces(resultGame.getCurrentBoard().getPieces()), adapter.colorToPlayerColor(resultGame.turn()));
         }

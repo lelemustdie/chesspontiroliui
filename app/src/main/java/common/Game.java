@@ -3,6 +3,8 @@ package common;
 import common.enums.Color;
 import common.mover.Mover;
 import common.validators.Validator;
+import edu.austral.dissis.chess.gui.GameOver;
+import org.ietf.jgss.GSSContext;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +14,17 @@ public record Game(Color turn, Color previousTurn, List<Board> history, Validato
     public GetResult<Game, Boolean> move(Movement movement) { //Optional es para no tener nulls
         if (!checkPieceEmpty(movement.getOrigin())) return new GetResult<>(Optional.of(this), true);
         if (!checkTurn(movement.getOrigin())) return new GetResult<>(Optional.of(this), true);
-        return mover.move(this, movement);
-    } //
+        GetResult<Game, Boolean> result = mover.move(this, movement);
+        if (result.getErrorValue()){
+            return result;
+        }
+        Game gameResult = result.getOptional().get();
+        if (gameResult.winningValidator.isValid(gameResult.history(), movement))
+            return new GetResult<>(Optional.of(gameResult), true, "Game Over");
+        else {
+            return result;
+        }
+    }
 
 
     public Board getCurrentBoard() {
@@ -31,4 +42,5 @@ public record Game(Color turn, Color previousTurn, List<Board> history, Validato
     private boolean checkTurn(Coordinate coordinate) {
         return getCurrentBoard().getPieces().get(coordinate).getColor() == turn;
     }
+
 }

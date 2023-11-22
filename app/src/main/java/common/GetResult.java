@@ -10,9 +10,19 @@ public class GetResult<T, R> {
 
     private final R errorValue;
 
+    private final String message;
+
     public GetResult(Optional<T> optional, R errorValue){ //priv
         this.optional = optional;
-        this.errorValue = errorValue; //either
+        this.errorValue = errorValue;
+        this.message="";  //either
+    }
+
+    public GetResult(Optional<T> optional, R errorValue, String message) {
+        this.optional = optional;
+        this.errorValue = errorValue;
+        this.message = message;
+
     }
     //dos metodos estaticos, create error result y validResult
     public Optional<T> getOptional() {
@@ -22,4 +32,9 @@ public class GetResult<T, R> {
     public R getErrorValue() {
         return errorValue;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
 }

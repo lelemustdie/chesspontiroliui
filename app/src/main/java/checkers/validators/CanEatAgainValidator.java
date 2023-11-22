@@ -21,7 +21,7 @@ public class CanEatAgainValidator implements Validator {
 
     @Override
     public boolean isValid(List<Board> history, Movement movement) {
-        Board currentBoard = history.get(history.size() - 1);
+        Board currentBoard = getCurrentBoard(history);
         Map<Coordinate, Piece> pieces = currentBoard.getPieces();
         Coordinate pieceOrigin = movement.getDestination();
         Piece piece = pieces.get(pieceOrigin);
@@ -33,6 +33,12 @@ public class CanEatAgainValidator implements Validator {
         }
         return false;
     }
+
+    private Board getCurrentBoard(List<Board> history) {
+        Board currentBoard = history.get(history.size() - 1);
+        return currentBoard;
+    }
+
     private List<Coordinate> getPossibleMoves(Coordinate current){
         List<Coordinate> possibleMoves = new ArrayList<>();
         possibleMoves.add(new Coordinate(current.column() + 2, current.row() + 2));
